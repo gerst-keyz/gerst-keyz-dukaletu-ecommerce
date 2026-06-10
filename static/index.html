@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G collection store - Mwanzo (E-Commerce Tanzania)</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom Modern Style -->
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="bg-white border-b border-light sticky-top shadow-sm py-3">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+        <div class="bg-success text-white rounded-3 p-2 d-flex align-items-center">
+          <i class="fas fa-shopping-cart fa-lg"></i>
+        </div>
+        <div>
+          <h2 class="h5 text-dark m-0 font-display">G collection <span class="text-success">store</span></h2>
+          <span class="text-muted d-block uppercase tracking-wider" style="font-size: 0.65rem;">Kariakoo • Tanzania</span>
+        </div>
+      </a>
+
+      <!-- Page Tabs Link Navigation (Desktop-only) -->
+      <nav class="d-none d-lg-flex flex-wrap gap-2">
+        <a href="index.html" class="btn btn-emerald btn-sm rounded-pill px-3">Mwanzo</a>
+        <a href="products.html" class="btn btn-light btn-sm rounded-pill px-3 text-secondary">Bidhaa</a>
+        <a href="about.html" class="btn btn-light btn-sm rounded-pill px-3 text-secondary">Kuhusu Sisi</a>
+        <a href="contact.html" class="btn btn-light btn-sm rounded-pill px-3 text-secondary">Mawasiliano</a>
+      </nav>
+
+      <!-- Actions Block -->
+      <div class="d-flex align-items-center gap-2">
+        <!-- Basket Cart indicator -->
+        <button class="btn btn-outline-success rounded-pill d-flex align-items-center gap-2 relative border-success" data-bs-toggle="offcanvas" data-bs-target="#cart-drawer">
+          <i class="fas fa-shopping-basket"></i>
+          <span class="small font-weight-bold d-none d-sm-inline">Kikapu Chako</span>
+          <span id="cart-count-badge" class="badge bg-danger rounded-pill">0</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button class="btn btn-light rounded-pill d-lg-none border border-secondary border-opacity-30" data-bs-toggle="offcanvas" data-bs-target="#mobile-menu-drawer" aria-label="Fungua Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Canvas Section -->
+  <section class="gradient-bg text-white py-5 py-md-5 overflow-hidden position-relative">
+    <div class="container py-5">
+      <div class="row align-items-center gy-5">
+        
+        <div className="col-lg-7 space-y-4">
+          <span class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill font-semibold uppercase mb-3">
+            Duka la Mtandaoni Uhakika 100%
+          </span>
+          <h1 class="display-4 font-display font-weight-extrabold text-white leading-tight mt-3">
+            Pata Bidhaa Bora <br>
+            kwa <span class="text-success">Bei na Urahisi Naafu!</span>
+          </h1>
+          <p class="text-white-50 lead my-4" style="max-width: 500px;">
+            Karibu kwenye G collection store. Tunaagiza bidhaa orijino kutoka viwandani na kukufikishia popote ulipo Tanzania. Agiza sasa na ufarijike kwa urahisi wa WhatsApp!
+          </p>
+          <div class="d-flex gap-3 mt-4">
+            <a href="products.html" class="btn btn-emerald btn-lg px-4 py-3 shadow-lg d-flex align-items-center gap-2">
+              Agiza Sasa <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="about.html" class="btn btn-outline-light btn-lg px-4 py-3">
+              Kuhusu Sisi
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5 d-flex justify-content-center">
+          <div class="bg-white bg-opacity-5 p-4 rounded-circle border border-secondary border-opacity-20 shadow-2xl overflow-hidden" style="width: 320px; height: 320px; display: flex; align-items: center; justify-content: center;">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" alt="Viatu vya Michezo" class="img-fluid drop-shadow" style="max-height: 250px; transform: rotate(-10deg);">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Best Sellers Grid -->
+  <section class="container py-5 my-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 pb-2">
+      <div>
+        <span class="text-success font-weight-bold uppercase small d-block">Mambo yanayovuma</span>
+        <h3 class="font-display font-weight-extrabold m-0 text-dark">Bidhaa Zinazouzwa Zaidi 🔥</h3>
+      </div>
+      <a href="products.html" class="text-success font-weight-bold text-decoration-none">
+        Onyesha Zote <i class="fas fa-chevron-right ms-1"></i>
+      </a>
+    </div>
+
+    <!-- Featured products loaded dynamically -->
+    <div class="row" id="featured-grid">
+      <!-- Loading placeholders -->
+      <div class="text-center py-5">
+        <div class="spinner-border text-success" role="status"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Core Values section -->
+  <section class="bg-light py-5">
+    <div class="container text-center py-4">
+      <span class="text-success uppercase font-weight-bold small">Kwanini Ununue Kupitia Sisi? 🌟</span>
+      <h3 class="font-display font-weight-extrabold text-dark my-2 mb-5">Ubora na Uaminifu Wetu</h3>
+
+      <div class="row g-4 leading-relaxed">
+        <div class="col-md-4">
+          <div class="bg-white p-5 rounded-4 shadow-sm h-100">
+            <div class="text-success mb-3"><i class="fas fa-award fa-2xl"></i></div>
+            <h5 class="font-display font-weight-bold text-dark">100% Bidhaa Orijino</h5>
+            <p class="text-muted small mb-0 mt-3">Bidhaa zetu zote zinafanyiwa ukaguzi kamili (QC) kabla ya kukabidhiwa kwa mteja ili kuhakikisha ubora wake.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white p-5 rounded-4 shadow-sm h-100">
+            <div class="text-success mb-3"><i class="fas fa-comments fa-2xl"></i></div>
+            <h5 class="font-display font-weight-bold text-dark">Agiza kwa WhatsApp</h5>
+            <p class="text-muted small mb-0 mt-3">Mawasiliano rahisi na msaada wa karibu tangu wakati wa kuagiza na kurekebisha malipo.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="bg-white p-5 rounded-4 shadow-sm h-100">
+            <div class="text-success mb-3"><i class="fas fa-history fa-2xl"></i></div>
+            <h5 class="font-display font-weight-bold text-dark">Usaidizi na Warranty</h5>
+            <p class="text-muted small mb-0 mt-3">Tunatoa baada ya mauzo na msaada wa kutosha kukufanya uridhike na kifaa chako kipya.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Testimonial Reviews -->
+  <section class="container py-5 my-4">
+    <div class="text-center mb-5">
+      <span class="text-success uppercase font-weight-bold small">Ushuhuda</span>
+      <h3 class="font-display font-weight-extrabold text-dark my-2">Maoni ya Wateja Wetu Wanaofurahi 💬</h3>
+      <p class="text-muted small">Soma uzoefu wa kweli wa wanunuzi ambao wamefanya manunuzi nasi kutoka sehem mbalimbali za nchi.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="bg-light p-4 rounded-4 h-100 d-flex flex-column justify-content-between border">
+          <p class="text-muted fst-italic small">"Huduma yao ni ya haraka sana! Niliagiza saa ya mkononi na mashine ya kufulia, nikapokea bidhaa zangu siku hiyo hiyo. Kuagiza kwa WhatsApp kunarahisisha mazungumzo."</p>
+          <div class="border-top pt-3 d-flex align-items-center gap-3">
+            <span class="h4 m-0">👨‍💼</span>
+            <div>
+              <h6 class="m-0 text-dark small font-weight-bold">Juma Hamisi</h6>
+              <span class="text-muted xsmall block">Mjasiriamali • Dar es Salaam</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="bg-light p-4 rounded-4 h-100 d-flex flex-column justify-content-between border">
+          <p class="text-muted fst-italic small">"Bidhaa zao ni orijino na bei ziko chini ukilinganisha na maduka mengine. Laptop ninayoitumia sasa niliagiza hapa na inafanya kazi nzuri."</p>
+          <div class="border-top pt-3 d-flex align-items-center gap-3">
+            <span class="h4 m-0">👩‍🏫</span>
+            <div>
+              <h6 class="m-0 text-dark small font-weight-bold">Amina Salum</h6>
+              <span class="text-muted xsmall block">Mwalimu • Arusha</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="bg-light p-4 rounded-4 h-100 d-flex flex-column justify-content-between border">
+          <p class="text-muted fst-italic small">"Kamera niliyoinunua imebadilisha kabisa biashara yangu. Msaada kwa wateja ulikuwa bora sana tangu uagizaji hadi kufika kwa bidhaa mkoani."</p>
+          <div class="border-top pt-3 d-flex align-items-center gap-3">
+            <span class="h4 m-0">📸</span>
+            <div>
+              <h6 class="m-0 text-dark small font-weight-bold">Emmanuel John</h6>
+              <span class="text-muted xsmall block">Mpiga Picha • Mwanza</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="bg-light p-4 rounded-4 h-100 d-flex flex-column justify-content-between border">
+          <p class="text-muted fst-italic small">"Napenda sana sneakers nilizozinunua hapa, zinadumu na zinavutia. Bei ni rafiki sana kwa wanafunzi na huduma ilikuwa nzuri sana!"</p>
+          <div class="border-top pt-3 d-flex align-items-center gap-3">
+            <span class="h4 m-0">👩‍🎓</span>
+            <div>
+              <h6 class="m-0 text-dark small font-weight-bold">Zuwena Omar</h6>
+              <span class="text-muted xsmall block">Mwanafunzi • Dodoma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Flyout Drawer Modal -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cart-drawer">
+    <div class="offcanvas-header border-b">
+      <h5 class="offcanvas-title font-display d-flex align-items-center gap-2">
+        <i class="fas fa-shopping-cart text-success"></i> Kikapu cha Ununuzi
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between p-4">
+      <div id="cart-items-body" class="overflow-y-auto mb-4" style="max-height: 60vh;">
+        <!-- Loaded by script -->
+      </div>
+
+      <!-- Footer Cart inputs -->
+      <div id="cart-footer" class="border-top pt-3" style="display: none;">
+        <div class="mb-3">
+          <label class="form-label font-weight-bold small text-muted uppercase">Taarifa za mteja</label>
+          <div class="row g-2">
+            <div class="col-6">
+              <input type="text" id="buyer-name" class="form-control form-control-sm" placeholder="Jina lako">
+            </div>
+            <div class="col-6">
+              <input type="text" id="buyer-location" class="form-control form-control-sm" placeholder="Mahali (mfano: Kinondoni)">
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-end mb-3">
+          <span class="font-weight-bold text-dark">Jumla Kuu:</span>
+          <span id="cart-total-amount" class="h5 text-success font-weight-extrabold m-0">TZS 0</span>
+        </div>
+        <button onclick="sendCartToWhatsApp()" class="btn btn-emerald btn-lg w-100 py-3 shadow-sm font-weight-bold">
+          <i class="fab fa-whatsapp me-2"></i> Tuma Oda WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobile-menu-drawer">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title font-display d-flex align-items-center gap-2">
+        <i class="fas fa-shopping-cart text-success"></i> G collection <span class="text-success">store</span>
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-4">
+      <div class="d-flex flex-column gap-3">
+        <a href="index.html" class="btn btn-light rounded-3 py-3 text-start px-3 font-semibold d-flex align-items-center gap-3"><i class="fas fa-home text-success"></i> Mwanzo</a>
+        <a href="products.html" class="btn btn-light rounded-3 py-3 text-start px-3 font-semibold d-flex align-items-center gap-3"><i class="fas fa-shopping-bag text-success"></i> Bidhaa</a>
+        <a href="about.html" class="btn btn-light rounded-3 py-3 text-start px-3 font-semibold d-flex align-items-center gap-3"><i class="fas fa-info-circle text-success"></i> Kuhusu Sisi</a>
+        <a href="contact.html" class="btn btn-light rounded-3 py-3 text-start px-3 font-semibold d-flex align-items-center gap-3"><i class="fas fa-envelope text-success"></i> Mawasiliano</a>
+        <a href="about.html#faq-section" class="btn btn-light rounded-3 py-3 text-start px-3 font-semibold d-flex align-items-center gap-3"><i class="fas fa-question-circle text-success"></i> Maswali na Majibu</a>
+        <a href="/" class="btn btn-light rounded-3 py-3 text-start px-3 font-semibold d-flex align-items-center gap-3"><i class="fas fa-tools text-success"></i> Dhibiti Duka</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/255762012479" target="_blank" class="whatsapp-float" d-title="Chat nasi">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Toast Notification panel -->
+  <div id="toast-container" class="position-fixed top-0 start-50 translate-middle-x p-3 z-index-1050"></div>
+
+  <!-- Footer block -->
+  <footer class="bg-dark text-white-50 pt-5 pb-3">
+    <div class="container border-bottom border-secondary border-opacity-20 pb-4">
+      <div class="row g-4 text-start">
+        <div class="col-md-4">
+          <h5 class="text-white font-display mb-3">G collection <span class="text-success">store</span></h5>
+          <p class="small">Sisi ni wauzaji wa kuaminika wa bidhaa mbalimbali za elektroniki, mavazi, na vifaa vya nyumbani nchini Tanzania. Tunanunua bidhaa orijino na kukufikishia popote ulipo kwa kasi kubwa.</p>
+          <span class="xsmall text-muted block text-emerald-400">Barabara ya Msimbazi, Kariakoo Dar es Salaam</span>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-white font-display mb-3 text-xs uppercase tracking-wider">Kurasa</h6>
+          <ul class="list-unstyled small space-y-2">
+            <li><a href="index.html" class="text-white-50 text-decoration-none hover-emerald">Mwanzo</a></li>
+            <li><a href="products.html" class="text-white-50 text-decoration-none hover-emerald">Bidhaa</a></li>
+            <li><a href="about.html" class="text-white-50 text-decoration-none hover-emerald">Kuhusu Sisi</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h6 class="text-white font-display mb-3 text-xs uppercase tracking-wider">Msaada</h6>
+          <ul class="list-unstyled small space-y-2">
+            <li><a href="contact.html" class="text-white-50 text-decoration-none hover-emerald">Mawasiliano</a></li>
+            <li><a href="about.html#faq-section" class="text-white-50 text-decoration-none hover-emerald">Maswali na Majibu</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="text-white font-display mb-3 text-xs uppercase tracking-wider">Mikoa Tunayofika</h6>
+          <p class="small">Tunasafirisha mizigo kupitia mabasi ya uhakika kila siku kwenda Dodoma, Arusha, Mwanza, Mbeya, Morogoro, Tanga na mikoa yote mingine ya Tanzania.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container pt-3 text-center text-xs">
+      <p class="m-0">© 2026 G collection store. Haki zote zimehifadhiwa.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core Script file -->
+  <script src="script.js"></script>
+</body>
+</html>
