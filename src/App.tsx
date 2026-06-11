@@ -354,7 +354,7 @@ Asante.`;
       {/* Sliding Page Content Wrapper */}
       <div 
         className="min-h-screen flex flex-col transition-transform duration-300 ease-out"
-        style={{ transform: mobileMenuOpen ? "translateX(-280px)" : "translateX(0)" }}
+        style={{ transform: mobileMenuOpen ? "translateX(-280px)" : "none" }}
       >
         
         {/* Styled Modern Header */}
